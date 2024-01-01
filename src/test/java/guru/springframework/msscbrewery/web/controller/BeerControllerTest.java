@@ -17,6 +17,7 @@ import org.springframework.restdocs.payload.FieldDescriptor;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.StringUtils;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import static org.hamcrest.core.Is.is;
@@ -74,12 +75,12 @@ public class BeerControllerTest {
                                         parameterWithName("beerId").description("UUID of desired beer to get")
                                 ),
                                 responseFields(
-                                        fieldWithPath("id").description("ID of Beer"),
+                                        fieldWithPath("id").description("ID of Beer").type(UUID.class),
                                         fieldWithPath("beerName").description("Beer Name"),
                                         fieldWithPath("beerStyle").description("Beer Style"),
                                         fieldWithPath("upc").description("UPC of Beer"),
-                                        fieldWithPath("createdDate").description("Date Created"),
-                                        fieldWithPath("lastUpdatedDate").description("Date Updated")
+                                        fieldWithPath("createdDate").description("Date Created").type(OffsetDateTime.class),
+                                        fieldWithPath("lastUpdatedDate").description("Date Updated").type(OffsetDateTime.class)
                                 )
                         )
                 );
